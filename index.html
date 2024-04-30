@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="PersonalInfo">
+
+  </div>
+  <div id="AboutMe">
+
+  </div>
+  <div id="Skills">
+
+  </div>
+  <div id="Education">
+
+  </div>
+  <div id="PersonalReference">
+
+  </div>
+  <div id="WorkExperience">
+
+  </div>
+  
+
+
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const apiUrl = 'https://resume-fiun.onrender.com/';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayPersonalInfo(data.Personal_Information);
+            displayAboutMe(data.About_Me);
+            displaySkills(data.Skills);
+            displayEducation(data.Education);
+            displayReference(data.Personal_Reference);
+            displayExperience(data.Work_Eperience);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+
+function displayPersonalInfo(info) {
+    const container = document.getElementById('PersonalInfo');
+    info.forEach(item => {
+        container.innerHTML += `<p>Name: ${item.name}</p>
+                                <p>Birthdate: ${item.Birthdate}</p>
+                                <p>Gender: ${item.Gender}</p>
+                                <p>Contact No: ${item.ContactNo}</p>
+                                <p>Address: ${item.Address}</p>
+                                <p>Email: ${item.Email}</p>`;
+    });
+}
+
+function displayAboutMe(about) {
+    const container = document.getElementById('AboutMe');
+    about.forEach(item => {
+        container.innerHTML += `<p>${item.Description}</p>`;
+    });
+}
+
+function displaySkills(skills) {
+    const container = document.getElementById('Skills');
+    skills.forEach(item => {
+        container.innerHTML += `<p>Skills: ${item.Language}: ${item.Webdesign})</p>`;
+    });
+}
+
+function displayEducation(education) {
+    const container = document.getElementById('Education');
+    education.forEach(item => {
+        container.innerHTML += `<p>${item.Degree} at ${item.Instution} (${item.Year})</p>`;
+    });
+}
+function displayReference(reference) {
+    const container = document.getElementById('PersonalReference');
+    attributes.forEach(item => {
+        container.innerHTML += `<p>${item.Name}: ${item.Contact}: ${item.Relationship}</p>`;
+    });
+}
+
+function displayExperience(experience) {
+    const container = document.getElementById('WorkExperience');
+    attributes.forEach(item => {
+        container.innerHTML += `<p>${item.Company}: ${item.Job_Title}: ${Start_Date}</p>`;
+    });
+}
+</script>
+</html>
+</html>
